@@ -1,0 +1,7 @@
+\newenvironment{myalg}{%      define a custom environment
+	\bigskip\noindent%         create a vertical offset to previous material
+	\refstepcounter{myalgctr}% increment the environment's counter
+	\textsc{Algorithm \themyalgctr}% or \textbf, \textit, ...
+	\newline%
+}{\par\bigskip}  %          create a vertical offset to following material
+\numberwithin{myalgctr}{section}

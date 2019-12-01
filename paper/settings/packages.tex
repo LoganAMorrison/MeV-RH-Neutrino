@@ -1,0 +1,70 @@
+%Misc (forgot what these are for)
+\def\mathclap#1{\text{\hbox to 0pt{\hss$\mathsurround=0pt#1$\hss}}}
+\usepackage[makeroom]{cancel}
+\usepackage{xcolor}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+\usepackage[parfill]{parskip}
+
+
+%Math packages 
+\usepackage{amsmath,amssymb,amsthm,amsfonts,verbatim,enumerate,graphicx}
+
+
+%Physics Packages 
+\usepackage{physics}
+\usepackage{tensor}
+\usepackage{siunitx}
+\usepackage{circuitikz}
+
+
+%Feynman Diagrams
+\usepackage{tikz-feynman}
+
+
+
+%Figures 
+\usepackage{graphics}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{epstopdf}
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{pgfplots}
+
+
+%Tikz figures
+\usepackage{tikz} %for making pretty figures
+\usepackage[tikz]{bclogo}
+\usepackage{tikz-3dplot}
+\tdplotsetmaincoords{60}{110}
+\usetikzlibrary{fadings}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\tikzstyle arrowstyle=[scale=1]
+\tikzstyle directed=[postaction={decorate,decoration={markings,
+		mark=at position .5 with {\arrow[arrowstyle]{stealth}}}}]
+\tikzstyle reverse directed=[postaction={decorate,decoration={markings,
+		mark=at position .5 with {\arrowreversed[arrowstyle]{stealth};}}}]
+\tikzstyle photon = [decorate, decoration={snake}]
+
+
+%Bibtex
+\usepackage{biblatex}
+
+
+
+%Particle masses 
+\newcommand{\mnp}{m_{\pi^0}}     %%Neutral pion 
+\newcommand{\mcp}{m_{\pi^{\pm}}} %%Charged pion 
+\newcommand{\mchi}{m_{\chi}}	 %%DM
+
+
+\usepackage[toc,page]{appendix}
+\usepackage{todonotes}
+
+% needed for creating hyperlinks in the document, the option colorlinks=true gets rid of the awful boxes, breaklinks breaks lonkg links (list of figures)
+\usepackage[colorlinks=true,breaklinks]{hyperref} 
+
+
+%Modify the section titles
+\usepackage[explicit]{titlesec}
+%\titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{#1\ \thesection}

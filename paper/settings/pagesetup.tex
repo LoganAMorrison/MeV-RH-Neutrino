@@ -1,0 +1,41 @@
+%Stuff for title
+\makeatletter % Need for anything that contains an @ command
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+\renewcommand{\maketitle} % Redefine maketitle to conserve space
+{ \begingroup \vskip 10pt
+	\begin{center}
+		\horrule{5pt}
+		\huge {\bf \@title}
+		\vskip 10pt
+		\large{\@author}
+		\vskip 10pt
+		\large{\@date}  \end{center}
+	\horrule{5pt} \\[0.4cm]
+	\vskip 10pt \endgroup \setcounter{footnote}{0} }
+
+%Edit page size
+\usepackage{geometry}
+\geometry{
+	top=1 in,
+	inner=1 in,
+	outer=1 in,
+	bottom=1 in,
+	headheight=1ex,
+	headsep=3ex
+}
+
+%Header
+\usepackage{changepage}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\pagestyle{fancyplain}
+\usepackage{lastpage}
+%\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\makeatletter
+%\renewcommand\@seccntformat[1]{}
+\makeatother
+\lhead{L. A. Morrison}
+\chead{5D - HW 2}
+\rhead{Page \thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{}
