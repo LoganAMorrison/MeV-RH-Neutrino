@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2021/Arch Linux)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: jcapexample.aux
+The style file: JHEP.bst
+Database file #1: DMRHN.bib
+You've used 14 entries,
+            2189 wiz_defined-function locations,
+            636 strings with 6148 characters,
+and the built_in function-call counts, 4377 in all, are:
+= -- 442
+> -- 192
+< -- 0
++ -- 55
+- -- 41
+* -- 401
+:= -- 612
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 14
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 235
+empty$ -- 367
+format.name$ -- 41
+if$ -- 1154
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 55
+newline$ -- 46
+num.names$ -- 14
+pop$ -- 27
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 188
+stack$ -- 0
+substring$ -- 114
+swap$ -- 127
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 27
+width$ -- 16
+write$ -- 152

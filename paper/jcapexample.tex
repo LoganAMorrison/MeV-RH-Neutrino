@@ -1,11 +1,12 @@
-\documentclass[a4paper,11pt]{article}
-\pdfoutput=1
+\documentclass[a4paper,11pt]{article} \pdfoutput=1
 \usepackage{jcappub}
 \usepackage[T1]{fontenc}
+\usepackage{physics}
+\usepackage{bm}
 
 
 
-\title{\boldmath A title with some math: $x=1$}
+\title{\boldmath Indirect Detection Signatures of Dark Matter Annihilation/Decay to Right-Handed Neutrinos}
 
 
 %% %simple case: 2 authors, same institution
@@ -13,31 +14,27 @@
 %% \author{and A. Nother Author}
 %% \affiliation{Institution,\\Address, Country}
 
-Stefania Gori
-Logan Morrison
-Stefano Profumo
-Bibhushan Shakya
-
 % more complex case: 4 authors, 3 institutions, 2 footnotes
-\author[a,b,1]{Stefania Gori,\note{Corresponding author.}}
-\author[a,b]{Logan Morrison,}
-\author[a,b]{Stefano Profumo\note{Also at Some University.}}
-\author[c]{Bibhushan Shakya}
+\author[a,b,1]{Stefania Gori}
+\author[a,b]{Logan Morrison}
+\author[a,b]{Stefano Profumo}
+\author[c,d]{Bibhushan Shakya}
 
 \affiliation[a]{Department of Physics, 1156 High St., University of California Santa Cruz, Santa Cruz, CA 95064, USA}
 \affiliation[b]{Santa Cruz Institute for Particle Physics, 1156 High St., Santa Cruz, CA 95064, USA}
-\affiliation[c]{CERN}
+\affiliation[c]{DESY, Notkestrasse 85, 22607 Hamburg, Germany}
+\affiliation[d]{CERN, Theoretical Physics Department, 1211 Geneva 23, Switzerland}
 
 % e-mail addresses: one for each author, in the same order as the authors
 \emailAdd{sgori@ucsc.edu}
 \emailAdd{loanmorr@ucsc.edu}
 \emailAdd{profumo@ucsc.edu}
-\emailAdd{bibhushan.shakya@cern.ch}
+\emailAdd{bibhushan.shakya@desy.de}
 
 
 
 
-\abstract{Abstract...}
+\abstract{Very much so.}
 
 
 
@@ -45,15 +42,89 @@ Bibhushan Shakya
 \maketitle
 \flushbottom
 
-\section{Some examples and best-practices}
+\section{Overview}
 \label{sec:intro}
+Right handed neutrinos (RHN), also referred to as sterile neutrinos or heavy neutral leptons, are one of the most well-motivated extensions to the Standard Model, featuring in many models of neutrino mass generation. In such models, RHNs are often part of an extended sector that also contains dark matter. Such frameworks have been extensively studied in the literature under the broad umbrella of neutrino portal dark matter \cite{Falkowski:2009yz,Macias:2015cna,Escudero:2016ksa,Escudero:2016tzx,Tang:2016sib,Batell:2017cmf,Batell:2017rol,Shakya:2018qzg,Patel:2019zky}, where the RHNs act as the portal connecting dark matter to the visible sector.
+
+If sterile neutrinos are heavier, dark matter annihilates or decays directly to SM neutrinos via the mixing between the sterile and active neutrinos (see e.g. \cite{Falkowski:2009yz,Patel:2019zky}). On the other hand, if dark matter is heavier than the RHNs, dark matter annihilates or decays exclusively to RHNs, and subsequent decays of the RHNs into SM particles then give rise to visible signals. Such signals have been employed in the past to explain various putative dark matter signals such as the Galactic Center excess \cite{Tang:2015coo} and high energy neutrinos at IceCube \cite{Roland:2015yoa}.  Such signals are fairly insensitive to the exact nature of the underlying model, since dark matter annihilations (or decays) produce an isotropic distribution of RHNs with energy $m_{DM}(\text{or }m_{DM}/2)$. The decay lifetimes of the RHNs are constrained by the seesaw mechanism and can generally be considered prompt on astrophysical scales (exceptional cases occur when considering dark matter annihilation/decay in the sun \cite{Allahverdi:2016fvl}, or RHNs with extremely long lifetimes \cite{Gori:2018lem}). Therefore, the spectra of visible signals (in photons, neutrinos, charged leptons, antiprotons) are essentially determined by only two parameters: the dark matter mass $m_{DM}$ and the right handed neutrino mass $m_{N}$.  The goal of our paper is to perform an extensive study of such signals in terms of these parameters. Indirect detection signals of dark matter annihilation into right handed neutrinos have been studied for specific cases: for $m_N=1-5$ GeV in \cite{Allahverdi:2016fvl}, and for $m_N=10-1000$ GeV in \cite{Campos:2017odj}.
+
+\section{Framework}
+\label{sec:framework}
+
+Effective operator between dark matter $X$ and RHNs $N$ facilitate either annihilations or decays. $N$ couples to the SM via Dirac mass term $LHN$. Everything follows from this.
+
+Describe how we compute the $N$ branching ratios.
+
+We consider a theory with a single Majorana RH neutrino which couples to the SM
+via a Yukawa interaction. In general, the terms in the Lagrangian density containing
+the RH neutrino will be:
+\begin{align}
+	\mathcal{L}
+	 & \supset
+	i\hat{\bar{\nu}}^{\dagger}\bar{\sigma}_{\mu}\partial^{\mu}\hat{\bar{\nu}}
+	- \frac{1}{2}\hat{m}_{\hat{\bar{\nu}}}\qty(\hat{\bar{\nu}}\hat{\bar{\nu}} + \hat{\bar{\nu}}^{\dagger}\hat{\bar{\nu}}^{\dagger})
+	+ \epsilon^{ab}Y^{i}_{\nu}\Phi_{a}L_{bi}\hat{\bar{\nu}} -
+\end{align}
+Here, \(\Phi_{a}\) is the Higgs doublet, \(L_{bi}\) is the lepton doublet for
+the \(i\)th generation (assumed to be such that the charged lepton mass matrix is diagonal),
+and \(\hat{\bar{\nu}}\) is the RH neutrino represented as a two-component
+Majorana spinor. The vector \(Y^{i}_{\nu}\) is a Yukawa vector coupling the
+\(i\)th lepton doublet to the RH neutrino. Expanding the Higgs around its vacuum
+expectation value, the neutrino mass terms are:
+\begin{align}
+	\mathcal{L}_{\mathrm{mass},\nu}
+	                        & \supset
+	- \frac{1}{2}\hat{m}_{\hat{\bar{\nu}}}\qty(\hat{\bar{\nu}}\hat{\bar{\nu}} + \hat{\bar{\nu}}^{\dagger}\hat{\bar{\nu}}^{\dagger})
+	- \frac{v}{\sqrt{2}}Y^{i}_{\nu}\hat{\nu}_{i}\hat{\bar{\nu}}
+	=
+	-\frac{1}{2}
+	\mathcal{N}^{T}
+	\mqty(\bm{0}_{3\times3} & \frac{v}{\sqrt{2}}Y_{\nu} \\ \frac{v}{\sqrt{2}}Y^{T}_{\nu} & \hat{m}_{\hat{\bar{\nu}}})
+	\mathcal{N}
+\end{align}
+Here \(\mathcal{N} = \mqty(\hat{\nu}_1 & \hat{\nu}_3 &\hat{\nu}_3&\hat{\bar{\nu}})^{T}\)
+is a vector composed of all neutrinos. For simplicity, we will assume that only
+a single entry of \(Y_{\nu}\) is non-zero. We set \(Y^{k}_{\hat{\nu}} = y\)
+and \(Y^{i}_{\hat{\nu}} = 0\) for \(i\neq k\). In this case, we may remove
+the active neutrinos \(\hat{\nu}_{i}\) for \(i\neq k\) from mass matrix and
+take them to be mass eigenstates. Then, our neutrino mass terms reduce to
+\begin{align}
+	\mathcal{L}_{\mathrm{mass},\nu}
+	                    & \supset
+	=
+	-\frac{1}{2}
+	\mqty(\hat{\nu}_{k} & \hat{\bar{\nu}})
+	\underbrace{\mqty(0 & \frac{v}{\sqrt{2}}y \\ \frac{v}{\sqrt{2}}y & \hat{m}_{\hat{\bar{\nu}}})}_{M_{\nu}}
+	\mqty(\hat{\nu}_{k}                       \\ \hat{\bar{\nu}})
+\end{align}
+The neutrino mass matrix can be diagonalized using Takagi diagonalization via a
+unitary matrix \(\Omega\) where
+\(\Omega^{T}M_{\nu}\Omega = \mathrm{diag}(m^{k}_{\nu}, m_{\bar{\nu}})\). The
+explicit form of \(\Omega\) is:
+\begin{align}
+	\Omega = \mqty(-i\cos\theta & \sin\theta \\ i\sin\theta & \cos\theta)
+\end{align}
+The parameters \(y, \hat{m}_{\hat{\bar{\nu}}}\) are related to \(m_{\bar{\nu}}\)
+and \(\theta\) via:
+\begin{align}
+	y & = \frac{\sqrt{2}m_{\bar{\nu}}\tan\theta}{v}, & \hat{m}_{\hat{\bar{\nu}}} & = m_{\bar{\nu}}\qty(1-\tan^2\theta).
+\end{align}
+In addition, the left-handed neutrino mass is \(m^{k}_{\nu} = m_{\bar{\nu}}\tan^2\theta\).
+To obtain the interactions between the RH neutrino and SM particles, we use
+\(\hat{\nu} = -i\cos\theta\nu_{k} + \sin\theta\bar{\nu}\), where the unhatted
+fields \(\nu_{k}\) and \(\bar{\nu}\) are mass eigenstates.
+
+From the Yukawa interaction given above, we find that the RH neutrino interacts
+with the Higgs and Goldstones via:
+\begin{align}
+	\mathcal{L} & \supset G^{+}
+\end{align}
+
+\section{Results}
+\label{sec:results}
+We can start collecting plots here.
 
 
-
-
-\appendix
-\section{Currents}
-The weak charged and neutral currents are:
 
 
 
@@ -64,8 +135,11 @@ The weak charged and neutral currents are:
 This is the most common positions for acknowledgments. A macro is
 available to maintain the same layout and spelling of the heading.
 
-\paragraph{Note added.} This is also a good position for notes added
-after the paper has been written.
+%\paragraph{Note added.} This is also a good position for notes added after the paper has been written.
+
+\appendix
+\section{More Info}
+As needed
 
 
 
@@ -77,19 +151,8 @@ after the paper has been written.
 % eventual typos) and retrive the document DOI and eventual errata.
 % We however suggest to always provide author, title and journal data:
 % in short all the informations that clearly identify a document.
-
-\begin{thebibliography}{99}
-
-\bibitem{a}
-Author, \emph{Title}, \emph{J. Abbrev.} {\bf vol} (year) pg.
-
-\bibitem{b}
-Author, \emph{Title},
-arxiv:1234.5678.
-
-\bibitem{c}
-Author, \emph{Title},
-Publisher (year).
+\bibliographystyle{JHEP}
+\bibliography{DMRHN}
 
 
 % Please avoid comments such as "For a review'', "For some examples",
@@ -99,6 +162,4 @@ Publisher (year).
 
 % Also, please have only one work for each \bibitem.
 
-
-\end{thebibliography}
 \end{document}
