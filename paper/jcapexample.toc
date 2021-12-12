@@ -1,4 +1,7 @@
 \contentsline {section}{\numberline {1}Overview}{1}{section.1}%
 \contentsline {section}{\numberline {2}Framework}{1}{section.2}%
-\contentsline {section}{\numberline {3}Results}{2}{section.3}%
-\contentsline {section}{\numberline {A}More Info}{2}{appendix.A}%
+\contentsline {section}{\numberline {3}Results}{3}{section.3}%
+\contentsline {section}{\numberline {A}General RH Neutrino Model}{3}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Mass Diagonalization}{3}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Interactions}{5}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Single RH Neutrino}{6}{subsection.A.3}%
