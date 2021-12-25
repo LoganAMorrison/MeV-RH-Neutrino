@@ -1,0 +1,73 @@
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.45\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\nu_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\ell_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(G^{-}\)};
+				\diagram*{
+				(i1) -- [anti charged scalar] (v1),
+				(v1) -- [fermion] (o1),
+				(v1) -- [fermion] (o2),
+				};
+			\end{feynman}
+			\node at (2.5,0) {\(=\frac{\sqrt{2}i}{v}m_{\nu_{i}}\qty(\bm{\cK}_{L}^{\dagger})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\rhn_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\ell_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(G^{-}\)};
+				\diagram*{
+				(i1) -- [anti charged scalar] (v1),
+				(v1) -- [fermion] (o1),
+				(v1) -- [fermion] (o2),
+				};
+			\end{feynman}
+			\node at (2.5,0) {\(=\frac{\sqrt{2}i}{v}m_{\rhn_{i}}\qty(\bm{\cK}_{R}^{\dagger})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\ell_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\nu_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(G^{+}\)};
+				\diagram*{
+				(i1) -- [charged scalar] (v1),
+				(o1) -- [fermion] (v1),
+				(o2) -- [fermion] (v1),
+				};
+			\end{feynman}
+			\node at (2.5,0) {\(=\frac{\sqrt{2}i}{v}m_{\nu_{j}}\qty(\bm{\cK}_{L})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\ell_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\rhn_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(G^{+}\)};
+				\diagram*{
+				(i1) -- [charged scalar] (v1),
+				(o1) -- [fermion] (v1),
+				(o2) -- [fermion] (v1),
+				};
+			\end{feynman}
+			\node at (2.5,0) {\(=\frac{\sqrt{2}i}{v}m_{\rhn_{j}}\qty(\bm{\cK}_{R})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\label{fig:feynrules_gvl}
+	\caption{Feynman rules containing a charged Golstone, a left-handed charged lepton and neutrino.}
+\end{figure}

@@ -1,0 +1,57 @@
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.5\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\nu_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\nu_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(h\)};
+				\diagram*{
+				(i1) -- [scalar] (v1),
+				(v1) -- [fermion] (o1),
+				(v1) -- [fermion] (o2),
+				};
+			\end{feynman}
+			\node at (4,0) {\(=-\frac{i}{v}\qty(m_{\nu_{i}}\bm{\cK}_{L}^{\dagger}\bm{\cK}_{L} + m_{\nu_{j}}\bm{\cK}_{L}^{T}\bm{\cK}^{*}_{L})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\rhn_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\rhn_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(h\)};
+				\diagram*{
+				(i1) -- [scalar] (v1),
+				(v1) -- [fermion] (o1),
+				(v1) -- [fermion] (o2),
+				};
+			\end{feynman}
+			\node at (4,0) {\(=-\frac{i}{v}\qty(m_{\rhn_{i}}\bm{\cK}_{R}^{\dagger}\bm{\cK}_{R} + m_{\rhn_{j}}\bm{\cK}_{R}^{T}\bm{\cK}^{*}_{R})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\linewidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (v1);
+				\vertex[right=1cm of v1] (p1);
+				\vertex[above=1cm of p1] (o1){\(\rhn_{i}\)};
+				\vertex[below=1cm of p1] (o2){\(\nu_{j}\)};
+				\vertex[left=1cm of v1] (i1) {\(h\)};
+				\diagram*{
+				(i1) -- [scalar] (v1),
+				(v1) -- [fermion] (o1),
+				(v1) -- [fermion] (o2),
+				};
+			\end{feynman}
+			\node at (4,0) {\(=-\frac{i}{v}\qty(m_{\rhn_{i}}\bm{\cK}_{R}^{T}\bm{\cK}^{*}_{L} + m_{\nu_{j}}\bm{\cK}_{R}^{\dagger}\bm{\cK}_{L})_{ij}\)};
+		\end{tikzpicture}
+	\end{subfigure}
+	\label{fig:feynrules_hvv}
+	\caption{Feynman rules containing a Higgs and two neutrinos. The Feynman rules for the
+		reversed fermion lines are the conjugate of the ones shown.}
+\end{figure}

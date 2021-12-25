@@ -1,14 +1,23 @@
 \documentclass[a4paper,11pt]{article} \pdfoutput=1
+
 \usepackage{jcappub}
 \usepackage[T1]{fontenc}
 \usepackage{physics}
 \usepackage{bm}
-
+\usepackage{subcaption}
+\usepackage{tikz-feynman}
 \newcommand{\rhn}{\bar{\nu}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cV}{\mathcal{V}}
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cN}{\mathcal{N}}
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\cK}{\mathcal{K}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cS}{\mathcal{S}}
 \newcommand{\OmegaVV}{\Omega_{\nu\nu}}
 \newcommand{\OmegaVN}{\Omega_{\nu\rhn}}
 \newcommand{\OmegaNV}{\Omega_{\rhn\nu}}
@@ -18,6 +27,37 @@
 \newcommand{\OmegaVNb}{\bm{\Omega}_{\nu\rhn}}
 \newcommand{\OmegaNVb}{\bm{\Omega}_{\rhn\nu}}
 \newcommand{\OmegaNNb}{\bm{\Omega}_{\rhn\rhn}}
+
+\newcommand{\ChiPT}{\mathrm{ChiPT}}
+
+\newcommand{\cw}{{c_{W}}}
+\newcommand{\sw}{{s_{W}}}
+\newcommand{\fpi}{{f_{\pi}}}
+\newcommand{\gf}{{G_{F}}}
+\newcommand{\vud}{{V_{ud}}}
+\newcommand{\vus}{{V_{us}}}
+\newcommand{\vudc}{{V^{*}_{ud}}}
+\newcommand{\vusc}{{V^{*}_{us}}}
+
+\newcommand{\piz}{{\pi^{0}}}
+\newcommand{\pip}{{\pi^{+}}}
+\newcommand{\pim}{{\pi^{-}}}
+\newcommand{\kp}{{K^{+}}}
+\newcommand{\km}{{K^{-}}}
+\newcommand{\kz}{{K^{0}}}
+\newcommand{\kzb}{{\bar{K}^{0}}}
+
+\newcommand{\si}{{\sigma}}
+\newcommand{\sibar}{{\bar{\sigma}}}
+
+\newcommand{\RefCite}[1]{Ref.~(\cite{#1})}
+\newcommand{\FigRef}[1]{Fig.~(\ref{#1})}
+\newcommand{\EqnRef}[1]{Eqn.~(\ref{#1})}
+\newcommand{\TabRef}[1]{Eqn.~(\ref{#1})}
+
+\tikzfeynmanset{
+	warn luatex=false
+}
 
 
 \title{\boldmath Indirect Detection Signatures of Dark Matter Annihilation/Decay to Right-Handed Neutrinos}
@@ -56,28 +96,69 @@
 \flushbottom
 
 \section{Overview}\label{sec:intro}
-Right handed neutrinos (RHN), also referred to as sterile neutrinos or heavy neutral leptons, are one of the most well-motivated extensions to the Standard Model, featuring in many models of neutrino mass generation. In such models, RHNs are often part of an extended sector that also contains dark matter. Such frameworks have been extensively studied in the literature under the broad umbrella of neutrino portal dark matter \cite{Falkowski:2009yz,Macias:2015cna,Escudero:2016ksa,Escudero:2016tzx,Tang:2016sib,Batell:2017cmf,Batell:2017rol,Shakya:2018qzg,Patel:2019zky}, where the RHNs act as the portal connecting dark matter to the visible sector.
+Right handed neutrinos (RHN), also referred to as sterile neutrinos or heavy
+neutral leptons, are one of the most well-motivated extensions to the Standard
+Model, featuring in many models of neutrino mass generation. In such models,
+RHNs are often part of an extended sector that also contains dark matter. Such
+frameworks have been extensively studied in the literature under the broad
+umbrella of neutrino portal dark matter
+\cite{Falkowski:2009yz,Macias:2015cna,Escudero:2016ksa,Escudero:2016tzx,Tang:2016sib,Batell:2017cmf,Batell:2017rol,Shakya:2018qzg,Patel:2019zky},
+where the RHNs act as the portal connecting dark matter to the visible sector.
 
-If sterile neutrinos are heavier, dark matter annihilates or decays directly to SM neutrinos via the mixing between the sterile and active neutrinos (see e.g. \cite{Falkowski:2009yz,Patel:2019zky}). On the other hand, if dark matter is heavier than the RHNs, dark matter annihilates or decays exclusively to RHNs, and subsequent decays of the RHNs into SM particles then give rise to visible signals. Such signals have been employed in the past to explain various putative dark matter signals such as the Galactic Center excess \cite{Tang:2015coo} and high energy neutrinos at IceCube \cite{Roland:2015yoa}.  Such signals are fairly insensitive to the exact nature of the underlying model, since dark matter annihilations (or decays) produce an isotropic distribution of RHNs with energy $m_{DM}(\text{or }m_{DM}/2)$. The decay lifetimes of the RHNs are constrained by the seesaw mechanism and can generally be considered prompt on astrophysical scales (exceptional cases occur when considering dark matter annihilation/decay in the sun \cite{Allahverdi:2016fvl}, or RHNs with extremely long lifetimes \cite{Gori:2018lem}). Therefore, the spectra of visible signals (in photons, neutrinos, charged leptons, antiprotons) are essentially determined by only two parameters: the dark matter mass $m_{DM}$ and the right handed neutrino mass $m_{N}$.  The goal of our paper is to perform an extensive study of such signals in terms of these parameters. Indirect detection signals of dark matter annihilation into right handed neutrinos have been studied for specific cases: for $m_N=1-5$ GeV in \cite{Allahverdi:2016fvl}, and for $m_N=10-1000$ GeV in \cite{Campos:2017odj}.
+If sterile neutrinos are heavier, dark matter annihilates or decays directly to
+SM neutrinos via the mixing between the sterile and active neutrinos (see e.g.
+\cite{Falkowski:2009yz,Patel:2019zky}). On the other hand, if dark matter is
+heavier than the RHNs, dark matter annihilates or decays exclusively to RHNs,
+and subsequent decays of the RHNs into SM particles then give rise to visible
+signals. Such signals have been employed in the past to explain various
+putative dark matter signals such as the Galactic Center excess
+\cite{Tang:2015coo} and high energy neutrinos at IceCube \cite{Roland:2015yoa}.
+Such signals are fairly insensitive to the exact nature of the underlying
+model, since dark matter annihilations (or decays) produce an isotropic
+distribution of RHNs with energy $m_{DM}(\text{or }m_{DM}/2)$. The decay
+lifetimes of the RHNs are constrained by the seesaw mechanism and can generally
+be considered prompt on astrophysical scales (exceptional cases occur when
+considering dark matter annihilation/decay in the sun
+\cite{Allahverdi:2016fvl}, or RHNs with extremely long lifetimes
+\cite{Gori:2018lem}). Therefore, the spectra of visible signals (in photons,
+neutrinos, charged leptons, antiprotons) are essentially determined by only two
+parameters: the dark matter mass $m_{DM}$ and the right handed neutrino mass
+$m_{N}$.  The goal of our paper is to perform an extensive study of such
+signals in terms of these parameters. Indirect detection signals of dark matter
+annihilation into right handed neutrinos have been studied for specific cases:
+for $m_N=1-5$ GeV in \cite{Allahverdi:2016fvl}, and for $m_N=10-1000$ GeV in
+\cite{Campos:2017odj}.
 
 \section{Framework}
 \label{sec:framework}
 
-Effective operator between dark matter $X$ and RHNs $N$ facilitate either annihilations or decays. $N$ couples to the SM via Dirac mass term $LHN$. Everything follows from this.
+Effective operator between dark matter $X$ and RHNs $N$ facilitate either
+annihilations or decays. $N$ couples to the SM via Dirac mass term $LHN$.
+Everything follows from this.
 
-Describe how we compute the $N$ branching ratios.
+We consider two dark matter models: one in which the dark matter decays into
+two RH neutrinos and another where the dark matter annihilates into RH
+neutrinos. For the purposes of this paper, the exact form of the interactions
+are irrelevent; we need only assume that they exist and produce either \(\chi
+\to \rhn\rhn\) or \(\chi\bar{\chi} \to \rhn\rhn\). The shapes of the spectra we
+will present do not depend on the specifics of the interactions since the
+energy of the final-state RH neutrinos (which in turn dictates the decay
+spectra) only depends on the center-of-mass energy of the process which is
+fixed by the dark matter mass and velocity. Thus, for the remainder of this section
+we will focus on the RH neutrino interactions with the SM.
 
-We consider a theory with a single Majorana RH neutrino which couples to the SM
-via a Yukawa interaction. In two-component spinor notation, the terms in the
-Lagrangian density containing the RH neutrino will be:
+We assume the existance of a single Majorana RH which couples to the SM via a
+Yukawa interaction. In two-component spinor notation, the terms in the
+Lagrangian density containing the neutrinos are:
 \begin{align}
 	\mathcal{L}
 	 & \supset
 	i\hat{\rhn}^{\dagger}\bar{\sigma}_{\mu}\partial^{\mu}\hat{\rhn}
 	- \frac{1}{2}\hat{m}_{\hat{\rhn}}\qty(\hat{\rhn}\hat{\rhn} + \hat{\rhn}^{\dagger}\hat{\rhn}^{\dagger})
 	+ \epsilon^{ab}Y^{i}_{\nu}\Phi_{a}L_{bi}\hat{\rhn}
+	- Y^{i}_{\ell}\Phi_{a}L_{bi}\hat{\nu}
 \end{align}
-Here, \(\Phi_{a}\) is the Higgs doublet, \(L_{bi}\) is the lepton doublet for
+Here, \(\epsilon^{ab}\) is two-dimensional Levi-Civita with \(\epsilon^{12}=+1\), \(\Phi_{a}\) is the Higgs doublet, \(L_{bi}\) is the lepton doublet for
 the \(i\)th generation (assumed to be such that the charged lepton mass matrix is diagonal),
 and \(\hat{\rhn}\) is the RH neutrino represented as a two-component
 Majorana spinor. The vector \(Y^{i}_{\nu}\) is a Yukawa vector coupling the
@@ -116,7 +197,7 @@ explicit form of \(\Omega\) is:
 \begin{align}
 	\Omega = \mqty(-i\cos\theta & \sin\theta \\ i\sin\theta & \cos\theta)
 \end{align}
-which can easily be check to be unitary. The parameters
+which can easily be checked to be unitary. The parameters
 \(y, \hat{m}_{\hat{\rhn}}\) can be translated to \(m_{\rhn}\) and \(\theta\)
 given:
 \begin{align}
@@ -124,38 +205,332 @@ given:
 \end{align}
 In addition, the left-handed neutrino mass is \(m^{k}_{\nu} = m_{\rhn}\tan^2\theta\).
 To obtain the interactions between the RH neutrino and SM particles, we use
-\(\hat{\nu} = -i\cos\theta\nu_{k} + \sin\theta\rhn\), where the unhatted
-fields \(\nu_{k}\) and \(\rhn\) are mass eigenstates.
+\begin{align}\label{eqn:framework:gauge_to_mass_eigenstates}
+	\hat{\nu}  & = -i\cos\theta\nu_{k} + \sin\theta\rhn, &
+	\hat{\rhn} & = i\sin\theta\nu_{k} + \cos\theta\rhn,
+\end{align}
+where the unhatted fields \(\nu_{k}\) and \(\rhn\) are mass eigenstates.
 
-From the Yukawa interaction given above, we find that the RH neutrino interacts
-with the Higgs and Goldstones via:
+Making the replacements given in Eqn.~\ref{eqn:framework:gauge_to_mass_eigenstates}, we find
+the following interaction Lagrangian for the RH-neutrino and \(\nu_{k}\):
+\begin{align}\label{eqn:framework:ew_interaction_lagrangian}
+	\cL_{\mathrm{int},\nu} & =
+	\cL_{\nu W^{\pm}}
+	+ \cL_{\nu Z}
+	+ \cL_{\nu h}
+	+ \cL_{\nu G^{\pm}}
+	+ \cL_{\nu G^{0}}
+\end{align}
+where the \(W\), \(Z\) and Higgs Lagrangians are
 \begin{align}
-	\mathcal{L} & \supset
-	\sqrt{2}\sin\theta\frac{m_{\rhn}}{v}G^{+}\ell_{i}\rhn
-	-i\tan\theta\frac{m_{\rhn}}{v}\qty(h+iG_{0})\nu_{k}\rhn
-	- \sin^2\theta \frac{m_{\rhn}}{v}(h+iG_{0})\rhn\rhn
+	% KL = -I * Cos[theta]
+	% KR = Sin[theta]
+	% KL^d KL = Cos[theta]^2
+	% KL^d KR = I*Cos[theta]*Sin[theta]
+	% KR^d KL = -I*Cos[theta]*Sin[theta]
+	% KR^d KR = Sin[theta]^2
+	% KL.mv = I*mvr*Sin[theta]*Tan[theta]
+	% KR.mn = mvr * Sin[theta]
+	% Transpose[KL].Conjugate[KL].mv = mvr Sin[theta]^2
+	% Transpose[KR].Conjugate[KR].mn = mvr Sin[theta]^2
+	% Transpose[KL].Conjugate[KR].mn = -I mvr Cos[theta] Sin[theta]
+	% Transpose[KR].Conjugate[KL].mv = I mvr Sin[theta]^2 Tan[theta]
+	% ml.KL = -I me Cos[theta]
+	% ml.KR = me Sin[theta]
+	\cL_{\nu W^{\pm}}
+	 & =
+	\frac{e}{\sqrt{2}\sw}\qty(-i\cos\theta W^{-}_{\mu}\ell^{\dagger}_{k}\bar{\sigma}_{\mu}\nu_{k}
+	+ \sin\theta W^{-}_{\mu}\ell^{\dagger}_{k}\bar{\sigma}_{\mu}\rhn) + \mathrm{h.c} \\
+	%-----------
+	\cL_{\nu Z}
+	 & =
+	\frac{e}{2\cw\sw}Z_{\mu}\qty[
+		\cos^2\theta\nu^{\dagger}_{k}\bar{\sigma}_{\mu}\nu_{k}
+		+ \sin^2\theta\rhn^{\dagger}\bar{\sigma}_{\mu}\rhn
+		+ \qty(i\cos\theta\sin\theta \nu_{k}^{\dagger}\bar{\sigma}_{\mu}\rhn + \mathrm{c.c})
+	]                                                                                \\
+	%-----------
+	\cL_{\nu h}
+	 & =
+	-\frac{h\sin\theta}{v}\qty[
+		m_{\nu}\cos\theta\nu_{k}\nu_{k}
+		+ m_{\rhn}\sin\theta\rhn\rhn
+		+ \qty(i m_{\rhn}\cos\theta\rhn\nu_{k} + \mathrm{c.c.})
+	] + \mathrm{c.c.}
+\end{align}
+and the Goldstone Lagrangians are
+\begin{align}
+	\cL_{\nu G^{\pm}}
+	 & =
+	\frac{\sqrt{2}G^{+}}{v}\ell_{k}\qty(
+	im_{\nu}\sin\theta\nu_{k}
+	+ m_{\rhn}\sin\theta\rhn)
+	+ \frac{\sqrt{2}m_{\ell_{k}}G^{-}}{v}\bar{\ell}_{k}\qty(
+	i\cos\theta\nu_{k}
+	+ \sin\theta\rhn)
 	+ \mathrm{c.c.}
+	\\
+	%-----------
+	\cL_{\nu G^{0}}
+	 & =
+	-\frac{i G^{0}\sin\theta}{v}\qty[
+		m_{\nu}\cos\theta\nu_{k}\nu_{k}
+		+ m_{\rhn}\sin\theta\rhn\rhn
+		+ \qty(i m_{\rhn}\cos\theta\rhn\nu_{k} + \mathrm{c.c.})
+	] + \mathrm{c.c.}
 \end{align}
-The gauge interactions are:
+In these Lagrangians, \(c_{W},s_{W}\) are the cosine and sine of the weak
+mixing angle, \(e\) is the EM gauge coupling and ``\(\mathrm{c.c.}\)'' stands
+for ``complex conjugate''.
+
+The Lagrangian presented in Eqn.~\ref{eqn:framework:ew_interaction_lagrangian} is appropriate
+for RH neutrino masses \(\gtrsim\) few GeV. For sub-GeV RH neutrino masses, we
+need to integrate out the \(W\), \(Z\) and Higgs and match onto an effective
+Lagrangian that takes into account QCD bound states. For this purpose, we use
+the Chiral Lagrangian. We match onto the chiral Lagrangian in two steps: first
+we integrate out the heavy bosons then we match the resulting Lagrangian onto
+the chiral Lagrangian.
+
+In this study, we will restrict ourselves to the leading-order chiral Lagrangian, which is given by:
 \begin{align}
-	\mathcal{L}_{\mathrm{gauge}}
-	 & \supset
-	\frac{e\cos\theta}{\sqrt{2}s_{W}}W^{-}_{\mu}\rhn^{\dagger}\bar{\sigma}^{\mu}\ell_i +
-	\frac{e\cos\theta}{\sqrt{2}s_{W}}W^{+}_{\mu}\ell^{\dagger}_i\bar{\sigma}^{\mu}\rhn^{\dagger} \\
-	 & +\frac{ie}{2c_{W}s_{W}}\cos\theta\sin\theta Z_{\mu}
-	\qty(
-	\nu^{\dagger}\bar{\sigma}^{\mu}\rhn
-	-\rhn^{\dagger}\bar{\sigma}^{\mu}\nu
-	)
-	-\frac{e}{2c_{W}s_{W}}\sin^2\theta Z_{\mu}\rhn^{\dagger}\rhn
-	\notag
+	\cL_{\ChiPT}
+	 & =
+	\frac{\fpi^{2}}{4}\Tr[\qty(D_{\mu}\bm{\Sigma})^{\dagger}\qty(D^{\mu}\bm{\Sigma})]
+	+ \frac{\fpi^{2}}{4}\Tr[\bm{\Sigma}^{\dagger}\bm{\chi} + \bm{\chi}^{\dagger}\bm{\Sigma}]
 \end{align}
-where we've ignored interactions without \(\rhn\), \(c_{W},s_{W}\) are the cosine and sine of the
-weak mixing angle and \(e\) is the EM gauge coupling.
+where \(\fpi \sim 93\) MeV is the pion decay constant, \(\bm{\Sigma}\) is the
+exponetial of the Psuedo-Goldstone matrix, \(D_{\mu}\) is the chiral covariant
+derivate and \(\bm{\chi}\) is a Spurion field mediating the soft chiral
+symmetry breaking. Explicitly, \(\bm{\Sigma}\) is given by:
+\begin{align}
+	\bm{\Sigma}              & = \exp(\frac{i}{\fpi}\phi^{a}\bm{\lambda}_{a}), &
+	\phi^{a}\bm{\lambda}_{a} & =
+	\mqty(
+	\piz + \eta_{8}/\sqrt{3} & \sqrt{2}\pip                                    & \sqrt{2}\kp                 \\
+	\sqrt{2}\pim             & -\piz +\eta_{8}/\sqrt{3}                        & \sqrt{2}\kz                 \\
+	\sqrt{2}\km              & \sqrt{2}\kzb                                    & -\sqrt{\frac{2}{3}}\eta_{8} \\
+	)
+\end{align}
+The chiral covariant derivative is given by
+\begin{align}
+	D_{\mu}\bm{\Sigma} & = \partial_{\mu}\bm{\Sigma} -i \bm{R}_{\mu}\bm{\Sigma} + i \bm{\Sigma}\bm{L}_{\mu}
+\end{align}
+with \(\bm{R}_{\mu}\) and \(\bm{L}_{\mu}\) representing the right and left
+handed quark currents. The Spurion field \(\bm{\chi}\) is taken to have a
+vacuum expectation value the breaks chiral symmetry breaking is the same
+way that quark masses do:
+\begin{align}
+	\bm{\chi} & = 2B_{0}\qty(\bm{M}_{q} + \bm{s} + i\bm{p})
+\end{align}
+Here, \(B_{0}\) is related to the quark condensate via \(B_{0} \sim
+-\expval{\bar{\bm{q}}\bm{q} + \bar{\bm{q}}^{\dagger}\bm{q}^{\dagger}} /
+(3\fpi)\)\footnote{The \(B_{0}\) parameter is ultimately removed in favor of
+the meson masses. For expample, we can use \(m_{\pi^{\pm}} =
+B_{0}(m_{u}+m_{d})\).} and \(\bm{s}\) and \(\bm{p}\) are the scalar and
+psuedo-scalar quark currents. The currents \(\bm{L}_{\mu}, \bm{R}_{\mu},
+\bm{s}\) and \(\bm{p}\) are determined from the light-quark Lagrangian, written
+as:
+\begin{align}
+	\cL =
+	\cdots
+	+ \bm{q}^{\dagger}\bm{L}^{\mu}\sibar_{\mu}\bm{q}
+	+ \bar{\bm{q}}^{\dagger}\bm{R}^{\mu}\sibar_{\mu}\bar{\bm{q}}
+	+ \bm{q}\qty(\bm{s}-i\bm{p})\bar{\bm{q}}
+	+ \bm{q}^{\dagger}\qty(\bm{s}+i\bm{p})\bar{\bm{q}}^{\dagger}
+\end{align}
+where \(\bm{q}\) and \(\bar{\bm{q}}\) are the vectors containings the left and
+right handed light quarks:
+\begin{align}
+	\bm{q}       & = \mqty(u       \\ d \\ s), &
+	\bar{\bm{q}} & = \mqty(\bar{u} \\ \bar{d} \\ \bar{s}) .
+\end{align}
+Thus, matching onto the chiral Lagrangian simply requires us to identify the
+quark currents.
+
+To identify the quarks currents, we begin by integrating out the heavy bosons. The result is the well-known
+4-Fermi Lagrangian, given by:
+\begin{align}\label{eqn:framework:four_fermi}
+	\cL_{4F} & = -\frac{4\gf}{\sqrt{2}}\qty[J^{+}_{\mu}J^{-}_{\mu} + J^{Z}_{\mu}J^{Z}_{\mu}]
+\end{align}
+where the charged and neutral currents are given by:
+\begin{align}
+	J^{+}_{\mu}     & = \hat{\nu}_{i}^{\dagger}\sibar_{\mu}\ell_{i} + V_{ud}u^{\dagger}\sibar_{\mu}d + V_{us}u^{\dagger}\sibar_{\mu}s         \\
+	J^{-}_{\mu}     & = \ell_{i}^{\dagger}\sibar_{\mu}\hat{\nu}_{i} + V^{*}_{ud}d^{\dagger}\sibar_{\mu}u + V^{*}_{us}s^{\dagger}\sibar_{\mu}u \\
+	\cw J^{Z}_{\mu} & =
+	g_{L,\nu}\hat{\nu}_{i}^{\dagger}\sibar_{\mu}\hat{\nu}_{i}
+	+ g_{L,\ell}\ell_{i}^{\dagger}\sibar_{\mu}\ell_{i}
+	+ g_{R,\ell}\bar{\ell}_{i}^{\dagger}\sibar_{\mu}\bar{\ell}_{i}
+	+ \sum_{q=u,d,s}\qty(
+	g_{L,q}q^{\dagger}\bar{\sigma}_{\mu}q + g_{R,q}\bar{q}^{\dagger}\bar{\sigma}_{\mu}\bar{q})
+\end{align}
+where the sum over \(i\) is implied, \(V_{ud}\) and \(V_{us}\) are the \(u\)-\(d\)
+and \(u\)-\(s\) CKM matrix elements, and the left/right-handed couplings are given by:
+\begin{align}
+	g_{L,u}    & = \frac{1}{2} - \frac{2}{3}\sw^2,  &
+	g_{L,d}    & = -\frac{1}{2} + \frac{1}{3}\sw^2, &
+	g_{L,\nu}  & = \frac{1}{2},                     &
+	g_{L,\ell} & = -\frac{1}{2} + \sw^2,              \\
+	%-------
+	g_{R,u}    & = -\frac{2}{3}\sw^2,               &
+	g_{R,d}    & = \frac{1}{3}\sw^2,                &
+	g_{R,\ell} & = \sw^2 .
+\end{align}
+Expanding out Eqn.~\ref{eqn:framework:four_fermi}, it can be brought into the following
+form:
+\begin{align}
+	-\frac{\sqrt{2}}{4\gf}\cL_{4F}
+	 & =
+	\bm{q}^{\dagger}\qty[\bm{V}j_{\mu}^{-} + \bm{V}^{\dagger}j_{\mu}^{+} + \frac{2}{\cw}\bm{G}_{L,q}j_{\mu}^{Z}]\sibar_{\mu}\bm{q}
+	+ \frac{2}{\cw}\bar{\bm{q}}^{\dagger}\qty(\bm{G}_{R,q}j_{\mu}^{Z})\sibar_{\mu}\bar{\bm{q}} \\
+	 & \quad
+	+ j_{\mu}^{+}j_{\mu}^{-} + j_{\mu}^{Z}j_{\mu}^{Z}
+	+ \cdots \notag
+\end{align}
+where the \(\cdots\) contain terms that contribute to the next to leading order
+chiral Lagrangian and \(j^{\pm}_{\mu}\) and \(j^{Z}_{\mu}\) are the charged and neutral currents containing leptons only:
+\begin{align}
+	j^{+}_{\mu}
+	                                             & =
+	\hat{\nu}_{i}^{\dagger}\sibar_{\mu}\ell_{i}, &
+	%-----
+	j^{-}_{\mu}
+	                                             & =
+	\ell_{i}^{\dagger}\sibar_{\mu}\hat{\nu}_{i}      \\
+	%----
+	j^{Z}_{\mu}
+	                                             & =
+	g_{L,\nu}\hat{\nu}_{i}^{\dagger}\sibar_{\mu}\hat{\nu}_{i}
+	+ g_{L,\ell}\ell_{i}^{\dagger}\sibar_{\mu}\ell_{i}
+	+ g_{R,\ell}\bar{\ell}_{i}^{\dagger}\sibar_{\mu}\bar{\ell}_{i}
+\end{align}
+The coupling matrices \(\bm{V}\), \(\bm{G}_{L,q}\) and \(\bm{G}_{R,q}\)
+are given by:
+\begin{align}
+	\bm{V}
+	        & =
+	\mqty(0 & V_{ud} & V_{us} \\ 0&0&0\\ 0&0&0),
+	        &
+	\bm{G}_{L,q}
+	        & =
+	\bm{T}_{3,q} - s_{W}^{2}\bm{Q}_{q},
+	        &
+	\bm{G}_{R,q}
+	        & =
+	-s_{W}^{2}\bm{Q}_{q}
+\end{align}
+with \(\bm{Q}_{q}\) the light-quark charge matrix and \(\bm{T}_{3,q}\) a matrix
+containing the light-quark weak-isospin eigenvalues
+\begin{align}
+	\bm{Q}_{q}
+	 & =
+	\frac{1}{3}\mqty(\dmat{2,-1,-1}),
+	 &
+	\bm{T}_{3,q}
+	 & =
+	\frac{1}{2}\mqty(\dmat{1,-1,-1}),
+\end{align}
+Written in this form, we can immediately identify the left and right handed currents as:
+\begin{align}
+	\bm{L}_{\mu}
+	 & =
+	%-\frac{1}{3c_{W}}j^{Z}_{\mu}\bm{I}
+	\frac{2(1-s_{W}^{2})}{c_{W}}\qty(\bm{\lambda}_{3}+\frac{1}{\sqrt{3}}\bm{\lambda}_{8})j^{Z}_{\mu}
+	+
+	\qty[
+	\qty(
+	V^{*}_{ud}\bm{\lambda}^{+}_{12} + V^{*}_{us}\bm{\lambda}^{+}_{45}
+	)j^{+}_{\mu}
+	+\mathrm{c.c.}
+	]\notag \\
+	\bm{R}_{\mu}
+	 & =
+	-\frac{2s_{W}^{2}}{c_{W}^{2}}
+	\qty(\bm{\lambda}_{3}+\frac{1}{\sqrt{3}}\bm{\lambda}_{8})j^{Z}_{\mu}
+\end{align}
+where \(\bm{\lambda}^{\pm}_{12} = (\bm{\lambda}_{1} \mp i\bm{\lambda}_{2})/2\)
+and \(\bm{\lambda}^{\pm}_{45} = (\bm{\lambda}_{4} \mp i\bm{\lambda}_{5})/2\).
+Note that we have not included the singlet term of \(\bm{L}_{\mu}\) since the
+vector singlet vanishes from the chiral covariant derivative and the axial
+singlet must be taken into account via the chiral anomaly.
+
+If we expand the chiral Lagrangian to order \(\gf\), we find the following Lagrangian:
+\begin{align}
+	\cL & =
+	-\frac{4G_{F}}{\sqrt{2}}\qty(
+	j^{Z}_{\mu}\cJ^{0}_{\mu}
+	+ \qty(j^{+}_{\mu}\cJ^{+}_{0} + \mathrm{c.c.})
+	+\qty(j^{Z}_{\mu})^{2}\cS^{0}
+	+j^{Z}_{\mu}\qty(j^{+}_{\mu}\cS^{+}+\mathrm{c.c.})
+	)
+\end{align}
+Here, the neutral meson current \(\cJ^{0}_{\mu}\) is given by:
+\begin{align}
+	\cJ^{0}_{\mu} & =
+	\frac{f_{\pi}}{c_{W}}\qty[
+		\partial^{\mu}\pi^{0}
+		+ \frac{1}{\sqrt{3}}
+		\partial^{\mu}\eta
+	]
+	- \frac{i (1-2s_{W}^{2})}{c_{W}}
+	\qty[
+	\pi^{+}\overleftrightarrow{\partial}_{\mu}\pi^{-} +
+	K^{+}\overleftrightarrow{\partial}_{\mu}K^{-}
+	]
+\end{align}
+where \(X\overleftrightarrow{\partial}_{\mu}Y \equiv X\partial_{\mu}Y - Y\partial_{\mu}X\).
+The charged meson current is:
+\begin{align}
+	\cJ^{+}_{\mu}
+	 & =
+	\frac{f_{\pi}}{\sqrt{2}}\qty[
+	V^{*}_{ud}\partial^{\mu}\pi^{+}
+	+ V^{*}_{us}\partial^{\mu}K^{+}
+	]
+	\\
+	 & \quad
+	+ i
+	\frac{V^{*}_{ud}}{2}\qty(
+	\bar{K}^{0}\overleftrightarrow{\partial}_{\mu}K^{+}
+	+ \sqrt{2}\pi^{+}\overleftrightarrow{\partial}_{\mu}\pi^{0}
+	)\notag  \\
+	 & \quad
+	+i\frac{V_{us}^{*}}{2}\qty(
+	K^{0}\overleftrightarrow{\partial}_{\mu}\pi^{+}
+	+\sqrt{\frac{3}{2}}K^{+}\overleftrightarrow{\partial}_{\mu}\eta
+	+\frac{1}{\sqrt{2}}K^{+}\overleftrightarrow{\partial}_{\mu}\pi^{0}
+	)\notag
+\end{align}
+The neutral meson density \(\cS_{0}\) is
+\begin{align}
+	\cS^{0} & =
+	- \frac{4(1-s_{W}^{2})s_{W}^{2}}{c_{W}^{2}}
+	\qty[
+	\pi^{+}\pi^{-} +
+	K^{+}K^{-}
+	]
+\end{align}
+and the charged meson density \(\cS_{+}\) is
+\begin{align}
+	\cS^{+}
+	 & =
+	\frac{i\sqrt{2}\fpi\sw^2}{\cw}\qty(\vudc\pip + \vusc\kp) \\
+	 & \quad
+	+ \frac{s_{W}^{2}}{c_{W}}\qty(
+	V^{*}_{ud}\qty(
+	\sqrt{2}\pi^{+}\pi^{0}
+	- K^{+}\bar{K}^{0}
+	)
+	+V^{*}_{us}\qty(
+	\sqrt{\frac{3}{2}}K^{+}\eta
+	+ \frac{1}{\sqrt{2}}K^{+}\pi^{0}
+	- \pi^{+}K^{0}
+	)
+	)\notag
+\end{align}
 
 
-\section{Results}
-\label{sec:results}
+\section{Results}\label{sec:results}
+
 We can start collecting plots here.
 
 
@@ -173,523 +548,11 @@ available to maintain the same layout and spelling of the heading.
 
 \appendix
 
-\section{General RH Neutrino Model}
-
-Consider a theory with \(n\) right-handed neutrinos \(\hat{\rhn}_1, \dots, \hat{\rhn}_n\) that
-interact with the standard model through a Yukawa interaction. The general
-renormalizable Lagrangian for this theory is
-\begin{align}\label{eqn:GeneralRHN}
-	\mathcal{L}\supset
-	\hat{\rhn}_i^{\dagger}\bar{\sigma}_{\mu}\partial^{\mu}\hat{\rhn}_i
-	-\frac{1}{2}\qty(\hat{\bm{m}}^{ij}\hat{\rhn}_i\hat{\rhn}_j + \mathrm{c.c.})
-	+ \qty(\Phi_{a}\epsilon^{ab}\hat{L}_{b,i}\bm{Y}^{ij}_{\nu}\hat{\rhn}_{j} + \mathrm{c.c})
-\end{align}
-where \(\hat{\bm{m}}\) is an \(n\times n\) complex symmetric matrix, and
-\(\bm{Y}_{\nu}\) is a \(3\times n\) complex matrix. Here \(\Phi\) is the Higgs doublet
-\begin{align}
-	\Phi = \frac{1}{\sqrt{2}}\mqty(\sqrt{2}G^{+} \\ v + h + iG^{0})
-\end{align}
-with \(v = 246 \ \mathrm{GeV}\) being the Higgs vacuum expectation value, \(h\)
-the Higgs and \(G^{+},G^{0}\) the changed and neutral Goldstones. The lepton
-doublet is parameterized as:
-\begin{align}
-	\hat{L}_{i} = \mqty(\hat{\nu}_i \\ \hat{\ell}_i)
-\end{align}
-with \(i\in\qty{1,2,3}\). \(\hat{\nu}_i\) are the left-handed neutrinos and
-\(\ell_i\) are the gauge eigenstates of the charged leptons.
-
-\subsection{Mass Diagonalization}
-Expanding out \ref{eqn:GeneralRHN}, the mass terms for the neutrinos are:
-\begin{align}\label{eqn:RHNMass}
-	\cL_{\nu,\mathrm{mass}}\supset
-	-\frac{1}{2}\qty(\hat{\bm{m}}^{ij}\hat{\rhn}_i\hat{\rhn}_j + \mathrm{c.c.})
-	- \frac{v}{\sqrt{2}}\qty(\hat{\nu}_{i}\bm{Y}^{ij}_{\nu}\hat{\rhn}_{j} + \mathrm{c.c})
-\end{align}
-Gathering the left- and right-handed neutrinos into a vector
-\begin{align}
-	\hat{\cN} = \mqty(\hat{\nu}_1 & \hat{\nu}_2 & \hat{\nu}_3 & \hat{\rhn}_1 & \cdots & \hat{\rhn}_n)^{T}
-\end{align}
-we can write the mass terms as:
-\begin{align}\label{eqn:RHNMassMatrix}
-	\cL_{\nu,\mathrm{mass}}
-	                  & \supset
-	-\frac{1}{2}\hat{\cN}_{i}\bm{M}^{ij}\hat{\cN}_j,
-	                  &
-	\hat{\bm{M}}      & = \mqty(
-	\bm{0}_{3\times3} & \hat{\bm{m}}_{D} \\
-	\hat{\bm{m}}_{D}  & \hat{\bm{m}}
-	)
-\end{align}
-where \(\hat{\bm{m}}_{D} = v\bm{Y}_{\nu}/\sqrt{2}\). The neutrino mass matrix is diagonalized
-using Takagi diagonalization with a unitary matrix \(\bm{\Omega}\). The diagonalization condition
-is
-\begin{align}\label{eqn:DiagCond}
-	\bm{\Omega}^{T}\hat{\bm{M}}\bm{\Omega} & = m^{i}_{\nu}\delta_{ij}, &  & (\text{no sum over } i)
-\end{align}
-where \(m^{i}_{\nu}\) are the masses of the neutrino mass eigenstates. It is convinient to
-write \(\bm{\Omega}\) as
-\begin{align}\label{eqn:OmegaDef}
-	\bm{\Omega} & = \mqty(\OmegaVVb & \OmegaVNb \\ \OmegaNVb & \OmegaNNb)
-\end{align}
-where \(\OmegaVVb\) is a \(3\times3\) matrix, \(\OmegaVNb\) is a \(3\times n\) matrix,
-\(\OmegaNVb\) is a \(n\times3\) matrix and \(\OmegaNNb\) is a \(n\times n\) matrix.
-The neutrino eigenstates are related to the gauge eigenstates through:
-\begin{align}
-	\hat{\nu}_{i}  & = \qty(\OmegaVVb)^{ij}\nu_j + \qty(\OmegaVNb)^{ij}\rhn_j \\
-	\hat{\rhn}_{i} & = \qty(\OmegaNVb)^{ij}\nu_j + \qty(\OmegaNNb)^{ij}\rhn_j
-\end{align}
-By \ref{eqn:DiagCond}, we find that the block matrices satisfy the following conditions:
-\begin{align}
-	\bm{m}_{\nu}       & =
-	\OmegaVVb^{T}\hat{\bm{m}}_{D}\OmegaNVb+\OmegaNVb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVVb+\OmegaNVb^{T}\hat{\bm{m}}\OmegaNVb \\
-	\bm{0}_{3\times n} & =
-	\OmegaNVb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVNb+\OmegaVVb^{T}\hat{\bm{m}}_{D}\OmegaNNb+\OmegaNVb^{T}\hat{\bm{m}}\OmegaNNb \\
-	\bm{0}_{n\times 3} & =
-	\OmegaVNb^{T}\hat{\bm{m}}_{D}\OmegaNVb
-	+\OmegaNNb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVVb
-	+\OmegaNNb^{T} \hat{\bm{m}}\OmegaNVb                                                                                 \\
-	\bm{m}_{\rhn}      & =
-	\OmegaVNb^{T}\hat{\bm{m}}_{D}\OmegaNNb
-	+\OmegaNNb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVNb
-	+\OmegaNNb^{T} \hat{\bm{m}}\OmegaNNb
-\end{align}
-where \(\bm{m}_{\nu}\) is a diagonal \(3\times3\) mass matrix and \(\bm{m}_{\rhn}\) is a
-\(n\times n\) diagonal mass matrix. By unitarity, we have:
-\begin{align}
-	\bm{1}_{3\times3}  & = \OmegaVVb^{\dagger}\OmegaVVb+\OmegaVNb^{\dagger}\OmegaNVb \\
-	\bm{0}_{3\times n} & = \OmegaVVb^{\dagger}\OmegaVNb+\OmegaVNb^{\dagger}\OmegaNNb \\
-	\bm{0}_{n\times3}  & = \OmegaNVb^{\dagger}\OmegaVVb+\OmegaNNb^{\dagger}\OmegaNVb \\
-	\bm{1}_{n\times n} & = \OmegaNVb^{\dagger}\OmegaVNb+\OmegaNNb^{\dagger}\OmegaNNb
-\end{align}
-
-The charged lepton mass matrix is diagonalized in a slightly different fashion (since the mass matrix
-is no longer a complex symmetric matrix), which we review here. The charge lepton
-yukawa interaction yields the following mass terms:
-\begin{align}
-	\cL_{\ell,\mathrm{mass}}\supset -\frac{v}{\sqrt{2}}\bm{Y}_{\ell}^{ij}
-	\hat{\ell}_{i}\hat{\bar{\ell}}_{j} + \mathrm{c.c.}
-\end{align}
-where \(\hat{\bar{\ell}}_{i}\) is the gauge eigenstate for the right-handed charged leptons.
-To diagonalize \(v\bm{Y}_{\ell}/\sqrt{2}\), we employ singular-value decomposition. Apply
-a unitary matrices \(\bm{L}_{\ell}\) and \(\bm{R}_{\ell}\) to the left-handed and right-handed
-charged leptons, respectively. Then, we require that:
-\begin{align}
-	\frac{v}{\sqrt{2}}
-	\qty(\bm{L}^T\bm{Y}_{\ell}\bm{R})^{ij}
-	= m_{i}\delta_{ij}
-	(\text{no sum over } i)
-\end{align}
-The masses \(m_{i}\) can be obtained by compute the positive square roots of
-\(\bm{Y}_{\ell}^{\dagger}\bm{Y}_{\ell}\) (which is a Hermitian matrix.) From now on,
-we will assume that the charge leptons rotations have been performed. We will also rotate
-the left-handed neutrinos by \(\bm{L}_{\ell}\) and redefine the neutrino Yukawa such
-that \(\bm{Y}_{\nu}\to \bm{L}_{\ell}\bm{Y}_{\nu}\).
+\input{files/appendix_general_rhneutrino.tex}
+\input{files/appendix_chiral_lagrangian.tex}
+\input{files/appendix_partial_widths.tex}
 
 
-\subsection{Interactions}
-Expanding out the Yukawa term in Eqn.~(\ref{eqn:GeneralRHN}), we find:
-\begin{align}
-	\Phi_{a}\epsilon^{ab}\hat{L}_{b,i}\bm{Y}^{ij}_{\nu}\hat{\rhn}_{j}
-	= \frac{2}{v}G^{+}\ell_{i}\qty(\hat{\bm{m}})^{ij}_{D}\hat{\rhn}_j +
-	\frac{1}{v}(h + iG^{0})\hat{\nu}_i\hat{\bm{m}}^{ij}_{D}\hat{\rhn}_{j}
-	+ \frac{1}{v}\hat{\nu}_i\hat{\bm{m}}^{ij}_{D}\hat{\rhn}_{j}
-\end{align}
-Rotating the neutrinos, we find:
-\begin{align}
-	 & \Phi_{a}\epsilon^{ab}\hat{L}_{b,i}\bm{Y}^{ij}_{\nu}\hat{\rhn}_{j}
-	- \frac{1}{2}\hat{\rhn}_i\hat{\bm{m}}^{ij}\hat{\rhn}_j=              \\
-	%-----------------------------------------------------------
-	 & \quad
-	\frac{2}{v}G^{+}\ell_{i}\qty(\hat{\bm{m}}_{D}\OmegaNVb)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	+ \frac{2}{v}G^{+}\ell_{i}\qty(\hat{\bm{m}}_{D}\OmegaNNb)^{ij}\rhn_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{h+iG^{0}}{2v}\nu_i\qty(
-	\OmegaVVb^{T}\hat{\bm{m}}_{D}\OmegaNVb +
-	\OmegaNVb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVVb
-	)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{h+iG^{0}}{2v}\rhn_i\qty(
-	\OmegaVNb^{T}\hat{\bm{m}}_{D}\OmegaNVb +
-	\OmegaNVb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVNb
-	)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{h+iG^{0}}{2v}\nu_i\qty(
-	\OmegaVVb^{T}\hat{\bm{m}}_{D}\OmegaNNb +
-	\OmegaNNb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVVb
-	)^{ij}\rhn_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{h+iG^{0}}{2v}\rhn_i\qty(
-	\OmegaVNb^{T}\hat{\bm{m}}_{D}\OmegaNNb +
-	\OmegaNNb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVNb
-	)^{ij}\rhn_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{1}{2}\nu_i\qty(
-	\OmegaVVb^{T}\hat{\bm{m}}_{D}\OmegaNVb +
-	\OmegaNVb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVVb +
-	\OmegaNVb^{T}\hat{m}\OmegaNVb
-	)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{1}{2}\rhn_i\qty(
-	\OmegaVNb^{T}\hat{\bm{m}}_{D}\OmegaNVb +
-	\OmegaNVb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVNb +
-	\OmegaNNb^{T}\hat{m}\OmegaNVb
-	)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{1}{2}\nu_i\qty(
-	\OmegaVVb^{T}\hat{\bm{m}}_{D}\OmegaNNb +
-	\OmegaNNb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVVb +
-	\OmegaNVb^{T}\hat{m}\OmegaNNb
-	)^{ij}\rhn_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{1}{2}\rhn_i\qty(
-	\OmegaVNb^{T}\hat{\bm{m}}_{D}\OmegaNNb +
-	\OmegaNNb^{T}\hat{\bm{m}}^{T}_{D}\OmegaVNb +
-	\OmegaNNb^{T}\hat{m}\OmegaNNb
-	)^{ij}\rhn_{j} \notag
-\end{align}
-Using the diagonalization conditions, this reduces to
-\begin{align}
-	 & \Phi_{a}\epsilon^{ab}\hat{L}_{b,i}\bm{Y}^{ij}_{\nu}\hat{\rhn}_{j}
-	- \frac{1}{2}\hat{\rhn}_i\hat{\bm{m}}^{ij}\hat{\rhn}_j=              \\
-	%-----------------------------------------------------------
-	 & \quad
-	\frac{2}{v}G^{+}\ell_{i}\qty(\hat{\bm{m}}_{D}\OmegaNVb)^{ij}\nu_{j}
-	+ \frac{2}{v}G^{+}\ell_{i}\qty(\hat{\bm{m}}_{D}\OmegaNNb)^{ij}\rhn_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{h+iG^{0}}{2v}\nu_i\qty(
-	\bm{m}_{\nu}
-	-\OmegaNVb^{T}\hat{\bm{m}}\OmegaNVb
-	)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	+ \frac{h+iG^{0}}{v}\rhn_i\qty(
-	\OmegaNNb^{T}\hat{\bm{m}}\OmegaNVb
-	)^{ij}\nu_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{h+iG^{0}}{2v}\rhn_i\qty(
-	\bm{m}_{\rhn}
-	-\OmegaNNb^{T}\hat{\bm{m}}\OmegaNNb
-	)^{ij}\rhn_{j}
-	\notag                                                               \\
-	%-----------------------------------------------------------
-	 & \quad
-	- \frac{1}{2}\nu_i\bm{m}_{\nu}^{ij}\nu_{j}
-	- \frac{1}{2}\rhn_i\bm{m}_{\rhn}^{ij}\rhn_{j} \notag
-	\notag
-\end{align}
-Next, lets we consider the kinetic term for the lepton doublet:
-\begin{align}
-	L^{\dagger}_{a,i}\bar{\sigma}_{\mu}D^{\mu}L_{a,i} =
-	\frac{e}{\sqrt{2}s_{W}}W^{+}_{\mu}\ell_{i}^{\dagger}\bar{\sigma}^{\mu}\hat{\nu}_{i}
-	+\frac{e}{\sqrt{2}s_{W}}W^{-}_{\mu}\hat{\nu}_{i}^{\dagger}\bar{\sigma}^{\mu}\ell_{i}
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\hat{\nu}_{i}^{\dagger}\bar{\sigma}^{\mu}\hat{\nu}_{i} + \cdots
-\end{align}
-Rotating the neutrinos, we find
-\begin{align}
-	% \qty(\OmegaVVb)^{ij}\nu_{j} + \qty(\OmegaVNb)^{ij}\rhn_{j}
-	% \qty(\OmegaNVb)^{ij}\nu_{j} + \qty(\OmegaNNb)^{ij}\rhn_{j}
-	L^{\dagger}_{a,i}\bar{\sigma}_{\mu}D^{\mu}L_{a,i}
-	 & = \cdots
-	%----------
-	+\frac{e}{\sqrt{2}s_{W}}W^{+}_{\mu}\ell_{i}^{\dagger}\bar{\sigma}^{\mu}
-	\qty(\OmegaVVb)^{ij}\nu_{j}
-	+\frac{e}{\sqrt{2}s_{W}}W^{+}_{\mu}\ell_{i}^{\dagger}\bar{\sigma}^{\mu}
-	\qty(\OmegaVNb)^{ij}\rhn_{j}\notag                                                                                    \\
-	%----------
-	 & \quad
-	+\frac{e}{\sqrt{2}s_{W}}W^{-}_{\mu}\nu_{i}^{\dagger}
-	\qty(\OmegaVVb^{\dagger})^{ij}\bar{\sigma}^{\mu}\ell_{j}
-	+\frac{e}{\sqrt{2}s_{W}}W^{-}_{\mu}\rhn_{i}^{\dagger}
-	\qty(\OmegaVNb^{\dagger})^{ij}\bar{\sigma}^{\mu}\ell_{j}\notag                                                        \\
-	%----------
-	 & \quad
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\nu_{i}^{\dagger}\qty(\OmegaVVb^{\dagger}\OmegaVVb)^{in}\bar{\sigma}^{\mu}\nu_{j}
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\nu_{i}^{\dagger}\qty(\OmegaVVb^{\dagger}\OmegaVNb)^{in}\bar{\sigma}^{\mu}\rhn_{j}\notag \\
-	%----------
-	 & \quad
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\rhn_{n}^{\dagger}\qty(\OmegaVNb^{\dagger}\OmegaVVb)^{ij}\bar{\sigma}^{\mu}\nu_{j}
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\rhn_{n}^{\dagger}\qty(\OmegaVNb^{\dagger}\OmegaVNb)^{ij}\bar{\sigma}^{\mu}\rhn_{j}\notag
-	%----------
-\end{align}
-Written in this way, we can interpret parts of mixing matrix. From the first two terms, we identify
-\(\OmegaVVb\) as the PMNS matrix and
-\(\OmegaVNb\) and its right-handed partner. We will now rename
-\(\OmegaVVb\) as \(\bm{\cK}_{L}\) and
-\(\OmegaVNb\) as \(\bm{\cK}_{R}\). Then, the above can be
-written as
-\begin{align}
-	% \qty(\OmegaVVb)^{ij}\nu_{j} + \qty(\OmegaVNb)^{ij}\rhn_{j}
-	% \qty(\OmegaNVb)^{ij}\nu_{j} + \qty(\OmegaNNb)^{ij}\rhn_{j}
-	L^{\dagger}_{a,i}\bar{\sigma}_{\mu}D^{\mu}L_{a,i}
-	 & = \cdots
-	%----------
-	+\frac{e}{\sqrt{2}s_{W}}W^{+}_{\mu}\ell_{i}^{\dagger}\bar{\sigma}^{\mu}\qty(\bm{\cK}_{L})^{ij}\nu_{j}
-	+\frac{e}{\sqrt{2}s_{W}}W^{+}_{\mu}\ell_{i}^{\dagger}\bar{\sigma}^{\mu}\qty(\bm{\cK}_{R})^{ij}\rhn_{j}\notag                \\
-	%----------
-	 & \quad
-	+\frac{e}{\sqrt{2}s_{W}}W^{-}_{\mu}\nu_{i}^{\dagger}\qty(\bm{\cK}_{L}^{\dagger})^{ij}\bar{\sigma}^{\mu}\ell_{j}
-	+\frac{e}{\sqrt{2}s_{W}}W^{-}_{\mu}\rhn_{i}^{\dagger}\qty(\bm{\cK}_{R}^{\dagger})^{ij}\bar{\sigma}^{\mu}\ell_{j}\notag      \\
-	%----------
-	 & \quad
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\nu_{i}^{\dagger}\qty(\bm{\cK}_{L}^{\dagger}\bm{\cK}_{L})^{ij}\bar{\sigma}^{\mu}\nu_{j}
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\nu_{i}^{\dagger}\qty(\bm{\cK}_{L}^{\dagger}\bm{\cK}_{R})^{ij}\bar{\sigma}^{\mu}\rhn_{j}\notag \\
-	%----------
-	 & \quad
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\rhn_{i}^{\dagger}\qty(\bm{\cK}_{R}^{\dagger}\bm{\cK}_{L})^{ij}\bar{\sigma}^{\mu}\nu_{j}
-	-\frac{e}{2c_{W}s_{W}}Z_{\mu}\rhn_{i}^{\dagger}\qty(\bm{\cK}_{R}^{\dagger}\bm{\cK}_{R})^{ij}\bar{\sigma}^{\mu}\rhn_{j}\notag
-	%----------
-\end{align}
-
-\subsection{Single RH Neutrino}
-Here we specialize the above discussion to the case with a single RH neutrino (i.e
-\(n=1\)). In this case, the neutrino mass matrix takes the form
-\begin{align}
-	\hat{\bm{M}} = \mqty(
-	0             & 0               & 0                & \hat{m}_{D,e}    \\
-	0             & 0               & 0                & \hat{m}_{D,\mu}  \\
-	0             & 0               & 0                & \hat{m}_{D,\tau} \\
-	\hat{m}_{D,e} & \hat{m}_{D,\mu} & \hat{m}_{D,\tau} & \mu              \\
-	)
-\end{align}
-where \(\hat{m}_{D,\ell} = v y_{\ell}/\sqrt{2}\). For now, we assume the \(\hat{m}_{D,\ell}\)
-are real (we relax this later.) The eigenvalues of
-\(\hat{\bm{M}}\) are:
-\begin{align}
-	m_{1} & = m_{2} = 0                                     \\
-	m_{3} & = \frac{\mu}{2}\qty(\sqrt{1 + 2\epsilon^{2}}-1) \\
-	m_{4} & = \frac{\mu}{2}\qty(\sqrt{1 + 2\epsilon^{2}}+1)
-\end{align}
-where \(\epsilon=vy/\mu\) and \(y^{2}=y_{e}^{2}+y_{\mu}^{2}+y_{\tau}^{2}\).
-Then mass eigenstates are:
-\begin{align}
-	\nu_{1} & = \frac{1}{\sqrt{y^{2}_{e}\qty(y^{2}_{\mu} + y^{2}_{\tau})}}
-	\mqty(0                                                                               \\
-	-y_{e}y_{\tau}                                                                        \\
-	y_{e}y_{\mu}                                                                          \\
-	0),     &
-	\nu_{2} & = \frac{1}{\sqrt{y^{2}y_{\tau}^2y_{\mu}^{2}\qty(y_{\mu}^{2}+y_{\tau}^{2})}}
-	\mqty(
-	-y_{\mu}y_{\tau}\qty(y_{\mu}^{2}+y_{\tau}^{2})                                        \\
-	y_{e}y^{2}_{\mu}y_{\tau}                                                              \\
-	y_{e}y_{\mu}y^{2}_{\tau}                                                              \\
-	0)                                                                                    \\
-	\nu_{3} & = \frac{i}{\sqrt{2m^{2}_{3} + v^2y^2}}
-	\mqty(
-	v y_{e}                                                                               \\
-	v y_{\mu}                                                                             \\
-	v y_{\tau}                                                                            \\
-	-\sqrt{2}m_{3}
-	),      &
-	\nu_{4} & = \frac{1}{\sqrt{2m^{2}_{4} + v^2y^2}}
-	\mqty(
-	v y_{e}                                                                               \\
-	v y_{\mu}                                                                             \\
-	v y_{\tau}                                                                            \\
-	-\sqrt{2}m_{4}
-	)
-\end{align}
-with \(\Omega\) being the matrix with the eigenstates as columns. If we set
-\(y_{\tau} = y\) and \(y_{e}=y_{\mu}=0\), we \(\Omega\) is (which we will denote
-as \(\Omega_{0}\))
-\begin{align}
-	\Omega_{0}
-	  & =
-	\mqty(
-	1 & 0 & 0                            & 0                           \\
-	0 & 1 & 0                            & 0                           \\
-	0 & 0 & i\sqrt{\frac{m_4}{m_4+m_3}}  & \sqrt{\frac{m_3}{m_4+m_3}}  \\
-	0 & 0 & -i\sqrt{\frac{m_3}{m_4+m_3}} & \sqrt{\frac{m_4}{m_4+m_3}})
-\end{align}
-If we define a mixing angle \(\theta\) such that:
-\begin{align}
-	\cos\theta & = \sqrt{\frac{m_4}{m_4+m_3}}, &
-	\sin\theta & = \sqrt{\frac{m_3}{m_4+m_3}}
-\end{align}
-then \(\tan^2\theta = m_{3}/m_{4}\). We can therefore define all the parameters in
-terms of the mixing angle and the heavy mass. Let \(m_{\nu}=m_{3}\) and
-\(m_{4} = m_{\rhn}\). Then,
-\begin{align}
-	m_{\nu} & = m_{\rhn}\tan^2\theta,                 &
-	y       & = \frac{\sqrt{2}m_{\rhn}}{v}\tan\theta, &
-	\mu     & = m_{\rhn}\qty(1-\tan^2\theta)
-\end{align}
-In the case where \(y_{e},y_{\mu}\) and \(y_{\tau}\) are all non-zero, then we
-first perform a rotation such that we remove \(y_{e}\) and \(y_{\mu}\). This is
-done using a rotation matrix \(R\) such that:
-\begin{align}
-	R^{T}\hat{\bm{M}}R =
-	\mqty(
-	0 & 0 & 0                  & 0                  \\
-	0 & 0 & 0                  & 0                  \\
-	0 & 0 & 0                  & \sqrt{v}y/\sqrt{2} \\
-	0 & 0 & \sqrt{v}y/\sqrt{2} & \mu                \\
-	)
-\end{align}
-To achive this, we use the following rotation matrix:
-\begin{align}
-	R = \mqty(
-	\cos\alpha\cos\beta & -\sin\beta & \cos\beta\sin\alpha & 0 \\
-	\cos\alpha\sin\beta & \cos\beta  & \sin\alpha\sin\beta & 0 \\
-	-\sin\alpha         & 0          & \cos\alpha          & 0 \\
-	0                   & 0          & 0                   & 1
-	)
-\end{align}
-where \(\alpha\) and \(\beta\) are such that
-\begin{align}
-	y_{e}    & = y\cos\beta\sin\alpha, &
-	y_{\mu}  & = y\sin\beta\sin\alpha, &
-	y_{\tau} & = y\cos\alpha,          &
-\end{align}
-Then, \(R^{T}\hat{\bm{M}}R\) is diagonalized using the above \(\Omega_{0}\). That
-is, \(\Omega^{T}_{0}R^{T}\hat{\bm{M}}R\Omega_{0}\) is diagonal. And therefore, we
-identify the full roation matrix as \(\Omega = R\Omega_{0}\), which is:
-\begin{align}
-	\Omega = \mqty(
-	\cos\alpha\cos\beta & -\sin\beta & i \sin\alpha\cos\beta\cos\theta & \sin\alpha\cos\beta\sin\theta \\
-	\cos\alpha\sin\beta & \cos\beta  & i \sin\alpha\sin\beta\cos\theta & \sin\alpha\sin\beta\sin\theta \\
-	-\sin\alpha         & 0          & i \cos\alpha\cos\theta          & \cos\alpha\sin\theta          \\
-	0                   & 0          & -i \sin\theta                   & \cos\theta                    \\
-	)
-\end{align}
-
-Lastly, we let the \(y_{\ell}\) be complex. In this case, we need to remove the
-phases before applying the above \(\Omega\). We can write
-\(\tilde{y}_{\ell}= y_{\ell}e^{i\delta_{\ell}}\). We can rephase the RH-Neutrino field
-to absorb the phase of \(\mu\). Thus, the mass matrix with complex Yukawas is:
-\begin{align}
-	\hat{\bm{M}} = \frac{v}{\sqrt{2}}\mqty(
-	0             & 0               & 0                & \tilde{y}_{e}    \\
-	0             & 0               & 0                & \tilde{y}_{\mu}  \\
-	0             & 0               & 0                & \tilde{y}_{\tau} \\
-	\tilde{y}_{e} & \tilde{y}_{\mu} & \tilde{y}_{\tau} & \sqrt{2}\mu/v    \\
-	)
-\end{align}
-Applying a phase matrix \(\bm{P}\) to the mass matrix as \(\bm{P}^{T}\hat{\bm{M}}\bm{P}\)
-removes all of the phases. Here, the matrix \(\bm{P}\) is given by:
-\begin{align}
-	\bm{P}
-	=
-	\mqty(\dmat{
-		e^{-i\delta_{e}} ,
-		e^{-i\delta_{\mu}},
-		e^{-i\delta_{\tau}},
-		1
-	})
-\end{align}
-Thus, the full mixing matrix \(\Omega\) for the neutrinos is given by the following product of
-rotations and phases:
-\begin{align}
-	\Omega      & =
-	\mqty(\dmat{
-		e^{-i\delta_{e}} ,
-		e^{-i\delta_{\mu}},
-		e^{-i\delta_{\tau}},
-		1
-	})
-	\mqty(
-	\dmat{
-	\cos\beta   & -\sin\beta                   \\
-	\sin\beta   & \cos\beta,1,1}
-	)                                          \\
-	            & \quad\times
-	\mqty(\dmat{
-	\cos\alpha  &                & \sin\alpha  \\
-	            & 1              &             \\
-	-\sin\alpha &                & \cos\alpha,
-		1
-	})
-	\mqty(\dmat{
-		1,1,
-	\cos\theta  & \sin\theta                   \\
-	-\sin\theta & \cos\theta                   \\
-	})
-	\mqty(\dmat{1,1,e^{i\pi/2},1})
-\end{align}
-If we take the 3 angles and the heavy neutrino mass as our parameters, the
-yukawas and majorana mass are given by:
-\begin{align}
-	\tilde{y}_{e}    & =\frac{\sqrt{2}m_{\rhn}}{v}\tan\theta\cos\beta\sin\alpha e^{i\delta_{e}},   &
-	\tilde{y}_{\mu}  & =\frac{\sqrt{2}m_{\rhn}}{v}\tan\theta\sin\beta\sin\alpha e^{i\delta_{\mu}},   \\
-	\tilde{y}_{\tau} & =\frac{\sqrt{2}m_{\rhn}}{v}\tan\theta\cos\alpha e^{i\delta_{\tau}},         &
-	\mu              & = m_{\rhn}(1-\tan^2\theta)
-\end{align}
-and the light neutrino mass is \(m_{\nu} = m_{\rhn}\tan^2\theta\). Additionally, the
-PMNS matrices are:
-\begin{align}
-	\bm{\cK}_{L}
-	                                      &
-	=
-	\mqty(
-	e^{-i\delta_{e}}\cos\alpha\cos\beta   &
-	-e^{-i\delta_{e}}\sin\beta            &
-	i \sin\alpha\cos\beta\cos\theta                   \\
-	%e^{-i\delta_{e}}\sin\alpha\cos\beta\sin\theta                             \\
-	%----
-	e^{-i\delta_{\mu}}\cos\alpha\sin\beta &
-	e^{-i\delta_{\mu}}\cos\beta           &
-	i e^{-i\delta_{\mu}}\sin\alpha\sin\beta\cos\theta \\
-	%& e^{-i\delta_{\mu}}\sin\alpha\sin\beta\sin\theta \\
-	%----
-	-e^{-i\delta_{\tau}}\sin\alpha        &
-	0                                     &
-	i e^{-i\delta_{\tau}}\cos\alpha\cos\theta
-	%& \cos\alpha\sin\theta          \\
-	)                                                 \\
-	\bm{\cK}_{R}
-	                                      &
-	=
-	\mqty(
-	%e^{-i\delta_{e}}\cos\alpha\cos\beta   &
-	%-e^{-i\delta_{e}}\sin\beta            &
-	%i \sin\alpha\cos\beta\cos\theta                   \\
-	e^{-i\delta_{e}}\sin\alpha\cos\beta\sin\theta     \\
-	%----
-	%e^{-i\delta_{\mu}}\cos\alpha\sin\beta &
-	%e^{-i\delta_{\mu}}\cos\beta           &
-	%i e^{-i\delta_{\mu}}\sin\alpha\sin\beta\cos\theta \\
-	e^{-i\delta_{\mu}}\sin\alpha\sin\beta\sin\theta   \\
-	%----
-	%-e^{-i\delta_{\tau}}\sin\alpha        &
-	%0                                     &
-	%i e^{-i\delta_{\tau}}\cos\alpha\cos\theta
-	\cos\alpha\sin\theta                              \\
-	)
-\end{align}
-
-
-
-
-In the above parameterization, we can see that cases of the RH-neutrino mixing with only
-a single LH-neutrino are:
-\begin{align}
-	\text{electron} & : & \beta & =0,                 & \alpha & =\pi/2, \\
-	\text{muon}     & : & \beta & =\pi/2,             & \alpha & =\pi/2, \\
-	\text{tau}      & : & \beta & =\mathrm{anything}, & \alpha & =0
-\end{align}
 
 
 % The bibliography will probably be heavily edited during typesetting.
